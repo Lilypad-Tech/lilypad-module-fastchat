@@ -1,49 +1,56 @@
 {
-    "APIVersion": "V1beta1",
-    "Metadata": {
-        "CreatedAt": "0001-01-01T00:00:00Z",
-        "Requester": {}
+    "machine": {
+        "gpu": 1,
+        "cpu": 1000,
+        "ram": 100
     },
-    "Spec": {
-        "Deal": {
-            "Concurrency": 1
+    "job": {
+        "APIVersion": "V1beta1",
+        "Metadata": {
+            "CreatedAt": "0001-01-01T00:00:00Z",
+            "Requester": {}
         },
-        "Docker": {
-            "Entrypoint": ["python3", "main.py"],
-            "Image": "xqua/carpai-demo-repo:v0.6"
-        },
-        "Engine": "Docker",
-        "Language": {
-            "JobContext": {}
-        },
-        "Network": {
-            "Type": "None"
-        },
-        "PublisherSpec": {
-            "Type": "Estuary"
-        },
-        "Resources": {
-            "GPU": "1"
-        },
-        "Timeout": 1800,
-        "Verifier": "Noop",
-        "Wasm": {
-            "EntryModule": {}
-        },
-        "inputs": [
-            {
-                "CID": {{.PromptCID}},
-                "Name": "prompt_template_input",
-                "StorageSource": "IPFS",
-                "path": "/prompt_template.json"
+        "Spec": {
+            "Deal": {
+                "Concurrency": 1
             },
-        ],
-        "outputs": [
-            {
-                "Name": "output",
-                "StorageSource": "IPFS",
-                "path": "/output"
-            }
-        ]
+            "Docker": {
+                "Entrypoint": ["python3", "main.py"],
+                "Image": "xqua/carpai-demo-repo:v0.6"
+            },
+            "Engine": "Docker",
+            "Language": {
+                "JobContext": {}
+            },
+            "Network": {
+                "Type": "None"
+            },
+            "PublisherSpec": {
+                "Type": "Estuary"
+            },
+            "Resources": {
+                "GPU": "1"
+            },
+            "Timeout": 1800,
+            "Verifier": "Noop",
+            "Wasm": {
+                "EntryModule": {}
+            },
+            "inputs": [
+                {
+                    "CID": {{.PromptCID}},
+                    "Name": "prompt_template_input",
+                    "StorageSource": "IPFS",
+                    "path": "/prompt_template.json"
+                },
+            ],
+            "outputs": [
+                {
+                    "Name": "output",
+                    "StorageSource": "IPFS",
+                    "path": "/output"
+                }
+            ]
+        }
     }
 }
